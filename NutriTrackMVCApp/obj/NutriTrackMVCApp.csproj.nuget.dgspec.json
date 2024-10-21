@@ -1,25 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sinit\\2024-H\\WebApp\\Projects\\NutriTrack\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj": {}
+    "C:\\Users\\3\\Source\\Repos\\NutriTrack\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sinit\\2024-H\\WebApp\\Projects\\NutriTrack\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj": {
+    "C:\\Users\\3\\Source\\Repos\\NutriTrack\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sinit\\2024-H\\WebApp\\Projects\\NutriTrack\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj",
+        "projectUniqueName": "C:\\Users\\3\\Source\\Repos\\NutriTrack\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj",
         "projectName": "NutriTrackMVCApp",
-        "projectPath": "C:\\Users\\Sinit\\2024-H\\WebApp\\Projects\\NutriTrack\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj",
-        "packagesPath": "C:\\Users\\Sinit\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sinit\\2024-H\\WebApp\\Projects\\NutriTrack\\NutriTrackMVCApp\\obj\\",
+        "projectPath": "C:\\Users\\3\\Source\\Repos\\NutriTrack\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj",
+        "packagesPath": "C:\\Users\\3\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\3\\Source\\Repos\\NutriTrack\\NutriTrackMVCApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Sinit\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -42,6 +45,22 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.9.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -61,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
