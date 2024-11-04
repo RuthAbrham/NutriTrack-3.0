@@ -1,0 +1,31 @@
+﻿@model NutriTrackMVCApp.Models.Food
+
+@{
+    ViewData["Title"] = "Edit Food";
+}
+
+<h2>Edit Food</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <!-- Same structure as create.cshtml, with form inputs for each field -->
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    
+    <!-- Repeat for all other fields as in create.cshtml -->
+    <div class="form-group">
+        <label asp-for="FoodGroup"></label>
+        <input asp-for="FoodGroup" class="form-control" />
+        <span asp-validation-for="FoodGroup" class="text-danger"></span>
+    </div>
+
+    <!-- Add all fields like Price, Weight, ImageURL, Energy, Fat, etc., as in create.cshtml -->
+    
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+

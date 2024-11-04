@@ -11,12 +11,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Legg til MVC-støtte.
+// Legg til MVC-stï¿½tte.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Konfigurer Swagger-bruk i utviklingsmiljø og produksjon.
+// Konfigurer Swagger-bruk i utviklingsmiljï¿½ og produksjon.
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
@@ -33,6 +33,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Food}/{action=Index}/{id?}");
 
 app.Run();

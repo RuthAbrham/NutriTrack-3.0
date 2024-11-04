@@ -25,6 +25,13 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <!-- Additional Navigation Links -->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Food" asp-action="Index">Food List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Food" asp-action="Create">Add New Food</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -47,3 +54,4 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+

@@ -1,0 +1,52 @@
+﻿@model NutriTrackMVCApp.Models.Food
+
+@{
+    ViewData["Title"] = "Food Details";
+}
+
+<h2>Food Details</h2>
+
+<div>
+    <h4>Food</h4>
+    <dl class="row">
+        <dt class="col-sm-2">Name</dt>
+        <dd class="col-sm-10">@Model.Name</dd>
+
+        <dt class="col-sm-2">Food Group</dt>
+        <dd class="col-sm-10">@Model.FoodGroup</dd>
+
+        <dt class="col-sm-2">Price</dt>
+        <dd class="col-sm-10">@Model.Price</dd>
+
+        <dt class="col-sm-2">Weight</dt>
+        <dd class="col-sm-10">@Model.Weight</dd>
+
+        <dt class="col-sm-2">Image URL</dt>
+        <dd class="col-sm-10">@Model.ImageURL</dd>
+
+        <dt class="col-sm-2">Energy</dt>
+        <dd class="col-sm-10">@Model.Energy</dd>
+
+        <dt class="col-sm-2">Fat</dt>
+        <dd class="col-sm-10">@Model.Fat</dd>
+
+        <dt class="col-sm-2">Saturated Fat</dt>
+        <dd class="col-sm-10">@Model.SaturatedFat</dd>
+
+        <dt class="col-sm-2">Carbohydrates</dt>
+        <dd class="col-sm-10">@Model.Carbohydrates</dd>
+
+        <dt class="col-sm-2">Sugar</dt>
+        <dd class="col-sm-10">@Model.Sugar</dd>
+
+        <dt class="col-sm-2">Protein</dt>
+        <dd class="col-sm-10">@Model.Protein</dd>
+
+        <dt class="col-sm-2">Salt</dt>
+        <dd class="col-sm-10">@Model.Salt</dd>
+    </dl>
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>
+
