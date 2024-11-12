@@ -4,49 +4,24 @@
     ViewData["Title"] = "Food Details";
 }
 
-<h2>Food Details</h2>
+<div class="container my-4">
+    <h2>@Model.Name</h2>
+    <img src="@Model.ImageURL" alt="@Model.Name" class="img-fluid mb-4" style="max-height: 300px; object-fit: cover;">
 
-<div>
-    <h4>Food</h4>
-    <dl class="row">
-        <dt class="col-sm-2">Name</dt>
-        <dd class="col-sm-10">@Model.Name</dd>
+    <p><strong>Price:</strong> @Model.Price NOK</p>
+    <p><strong>Weight:</strong> @Model.Weight g</p>
+    
+    <h4>Nutritional Information (per 100g)</h4>
+    <ul class="list-group mb-4">
+        <li class="list-group-item"><strong>Energy:</strong> @Model.Energy kcal</li>
+        <li class="list-group-item"><strong>Fat:</strong> @Model.Fat g</li>
+        <li class="list-group-item"><strong>Saturated Fat:</strong> @Model.SaturatedFat g</li>
+        <li class="list-group-item"><strong>Carbohydrates:</strong> @Model.Carbohydrates g</li>
+        <li class="list-group-item"><strong>Sugar:</strong> @Model.Sugar g</li>
+        <li class="list-group-item"><strong>Protein:</strong> @Model.Protein g</li>
+        <li class="list-group-item"><strong>Salt:</strong> @Model.Salt g</li>
+    </ul>
 
-        <dt class="col-sm-2">Food Group</dt>
-        <dd class="col-sm-10">@Model.FoodGroup</dd>
-
-        <dt class="col-sm-2">Price</dt>
-        <dd class="col-sm-10">@Model.Price</dd>
-
-        <dt class="col-sm-2">Weight</dt>
-        <dd class="col-sm-10">@Model.Weight</dd>
-
-        <dt class="col-sm-2">Image URL</dt>
-        <dd class="col-sm-10">@Model.ImageURL</dd>
-
-        <dt class="col-sm-2">Energy</dt>
-        <dd class="col-sm-10">@Model.Energy</dd>
-
-        <dt class="col-sm-2">Fat</dt>
-        <dd class="col-sm-10">@Model.Fat</dd>
-
-        <dt class="col-sm-2">Saturated Fat</dt>
-        <dd class="col-sm-10">@Model.SaturatedFat</dd>
-
-        <dt class="col-sm-2">Carbohydrates</dt>
-        <dd class="col-sm-10">@Model.Carbohydrates</dd>
-
-        <dt class="col-sm-2">Sugar</dt>
-        <dd class="col-sm-10">@Model.Sugar</dd>
-
-        <dt class="col-sm-2">Protein</dt>
-        <dd class="col-sm-10">@Model.Protein</dd>
-
-        <dt class="col-sm-2">Salt</dt>
-        <dd class="col-sm-10">@Model.Salt</dd>
-    </dl>
+    <a asp-action="Index" class="btn btn-secondary">Back to Food List</a>
 </div>
-
-<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
-<a asp-action="Index" class="btn btn-secondary">Back to List</a>
 

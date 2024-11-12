@@ -465,11 +465,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sinit\\2024-H\\WebApp\\Projects\\NutriTrack\\NutriTrackReactApp\\NutriTrackAPI\\NutriTrackAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Sinit\\OneDrive\\Documents\\test\\NutriTrack\\NutriTrackReactApp\\NutriTrackAPI\\NutriTrackAPI.csproj",
       "projectName": "NutriTrackAPI",
-      "projectPath": "C:\\Users\\Sinit\\2024-H\\WebApp\\Projects\\NutriTrack\\NutriTrackReactApp\\NutriTrackAPI\\NutriTrackAPI.csproj",
+      "projectPath": "C:\\Users\\Sinit\\OneDrive\\Documents\\test\\NutriTrack\\NutriTrackReactApp\\NutriTrackAPI\\NutriTrackAPI.csproj",
       "packagesPath": "C:\\Users\\Sinit\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sinit\\2024-H\\WebApp\\Projects\\NutriTrack\\NutriTrackReactApp\\NutriTrackAPI\\obj\\",
+      "outputPath": "C:\\Users\\Sinit\\OneDrive\\Documents\\test\\NutriTrack\\NutriTrackReactApp\\NutriTrackAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Sinit\\AppData\\Roaming\\NuGet\\NuGet.Config"

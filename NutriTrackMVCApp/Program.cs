@@ -22,6 +22,13 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+// Ensure the database is created and seeded with initial data
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    context.Database.Migrate(); // Ensures the database is created
+    DatabaseInitializer.Seed(context); // Calls the Seed method to add initial data
+}
 
 // Konfigurer mellomvaren for applikasjonen.
 app.UseHttpsRedirection();
