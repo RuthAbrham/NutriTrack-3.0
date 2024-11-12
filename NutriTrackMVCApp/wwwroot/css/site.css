@@ -19,7 +19,9 @@ html {
 
 body {
   margin-bottom: 60px;
+  color:red
 }
+/*
 .card img {
   height: 200px;
   object-fit: cover;
@@ -32,4 +34,52 @@ body {
 
 .card-text {
   color: #555;
+}
+*/
+
+/* Container holding all food items in a horizontal row */
+.food-flex-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping to a new line if there are too many items */
+  gap: 20px;       /* Space between each card */
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+/* Each food item card */
+.food-card {
+  flex: 1 1 250px; /* Sets a base width for each card and allows flexibility */
+  max-width: 250px; /* Ensures cards are the same width */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 15px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Image styling for consistency */
+.food-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* Ensures image scales without distortion */
+  margin-bottom: 10px;
+}
+
+/* Styling for food card body */
+.food-card-body h5 {
+  font-size: 1.1em;
+  margin: 10px 0 5px;
+}
+
+.food-card-body p {
+  margin: 5px 0;
+}
+
+.food-card-body a {
+  margin-top: 10px;
 }

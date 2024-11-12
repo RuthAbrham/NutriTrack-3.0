@@ -7,31 +7,32 @@
 <div class="container">
     <h2 class="my-4">Food Items</h2>
 
-    <!-- Food items container with a grid layout -->
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <!-- Food items container with a horizontal flex layout -->
+    <div class="food-flex-container">
         @foreach (var item in Model)
         {
-            <div class="col">
-                <div class="card h-100">
-                    <!-- Display food image -->
-                    <img src="@item.ImageURL" class="card-img-top" alt="@item.Name" style="height: 200px; object-fit: cover;">
+            <div class="food-card">
+                <!-- Display food image -->
+                <img src="@item.ImageURL" alt="@item.Name" class="food-image">
 
-                    <div class="card-body">
-                        <!-- Food name and price -->
-                        <h5 class="card-title">@item.Name</h5>
-                        <p class="card-text">
-                            <strong>Price:</strong> @item.Price NOK<br />
-                            <strong>Weight:</strong> @item.Weight g
-                        </p>
+                <div class="food-card-body">
+                    <!-- Food name and price -->
+                    <h5>@item.Name</h5>
+                    <p>
+                        <strong>Price:</strong> @item.Price NOK<br />
+                        <strong>Weight:</strong> @item.Weight g
+                    </p>
 
-                        <!-- Button to view details -->
-                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">View Details</a>
-                    </div>
+                    <!-- Button to view details -->
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">View Details</a>
                 </div>
             </div>
         }
     </div>
 </div>
+
+
+
 
 
 

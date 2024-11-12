@@ -13,6 +13,18 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Sinit\\OneDrive\\Documents\\test\\NutriTrack\\NutriTrackMVCApp\\wwwroot\\images\\foods\\gifflar_kanel.png",
+      "PackagePath": "staticwebassets\\images\\foods\\gifflar_kanel.png"
+    },
+    {
+      "Id": "C:\\Users\\Sinit\\OneDrive\\Documents\\test\\NutriTrack\\NutriTrackMVCApp\\wwwroot\\images\\foods\\kjøttdeig-gilde.jpg",
+      "PackagePath": "staticwebassets\\images\\foods\\kjøttdeig-gilde.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Sinit\\OneDrive\\Documents\\test\\NutriTrack\\NutriTrackMVCApp\\wwwroot\\images\\foods\\sørlandschips.jpg",
+      "PackagePath": "staticwebassets\\images\\foods\\sørlandschips.jpg"
+    },
+    {
       "Id": "C:\\Users\\Sinit\\OneDrive\\Documents\\test\\NutriTrack\\NutriTrackMVCApp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
