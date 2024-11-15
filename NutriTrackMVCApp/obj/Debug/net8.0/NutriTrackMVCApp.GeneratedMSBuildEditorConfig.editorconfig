@@ -9,59 +9,59 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = NutriTrackMVCApp
 build_property.RootNamespace = NutriTrackMVCApp
-build_property.ProjectDir = C:\Users\Sinit\OneDrive\Documents\test\NutriTrack\NutriTrackMVCApp\
+build_property.ProjectDir = C:\Users\natha\OneDrive\Desktop\w\Fiker@mahi\NutriTrack-main\NutriTrackMVCApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Sinit\OneDrive\Documents\test\NutriTrack\NutriTrackMVCApp
+build_property.MSBuildProjectDirectory = C:\Users\natha\OneDrive\Desktop\w\Fiker@mahi\NutriTrack-main\NutriTrackMVCApp
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Sinit/OneDrive/Documents/test/NutriTrack/NutriTrackMVCApp/Views/Food/Create.cshtml]
+[C:/Users/natha/OneDrive/Desktop/w/Fiker@mahi/NutriTrack-main/NutriTrackMVCApp/Views/Food/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9vZFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sinit/OneDrive/Documents/test/NutriTrack/NutriTrackMVCApp/Views/Food/Delete.cshtml]
+[C:/Users/natha/OneDrive/Desktop/w/Fiker@mahi/NutriTrack-main/NutriTrackMVCApp/Views/Food/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9vZFxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sinit/OneDrive/Documents/test/NutriTrack/NutriTrackMVCApp/Views/Food/Details.cshtml]
+[C:/Users/natha/OneDrive/Desktop/w/Fiker@mahi/NutriTrack-main/NutriTrackMVCApp/Views/Food/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9vZFxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sinit/OneDrive/Documents/test/NutriTrack/NutriTrackMVCApp/Views/Food/Edit.cshtml]
+[C:/Users/natha/OneDrive/Desktop/w/Fiker@mahi/NutriTrack-main/NutriTrackMVCApp/Views/Food/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9vZFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sinit/OneDrive/Documents/test/NutriTrack/NutriTrackMVCApp/Views/Food/Index.cshtml]
+[C:/Users/natha/OneDrive/Desktop/w/Fiker@mahi/NutriTrack-main/NutriTrackMVCApp/Views/Food/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9vZFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sinit/OneDrive/Documents/test/NutriTrack/NutriTrackMVCApp/Views/Home/Index.cshtml]
+[C:/Users/natha/OneDrive/Desktop/w/Fiker@mahi/NutriTrack-main/NutriTrackMVCApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sinit/OneDrive/Documents/test/NutriTrack/NutriTrackMVCApp/Views/Home/Privacy.cshtml]
+[C:/Users/natha/OneDrive/Desktop/w/Fiker@mahi/NutriTrack-main/NutriTrackMVCApp/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sinit/OneDrive/Documents/test/NutriTrack/NutriTrackMVCApp/Views/Shared/Error.cshtml]
+[C:/Users/natha/OneDrive/Desktop/w/Fiker@mahi/NutriTrack-main/NutriTrackMVCApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sinit/OneDrive/Documents/test/NutriTrack/NutriTrackMVCApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/natha/OneDrive/Desktop/w/Fiker@mahi/NutriTrack-main/NutriTrackMVCApp/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sinit/OneDrive/Documents/test/NutriTrack/NutriTrackMVCApp/Views/_ViewImports.cshtml]
+[C:/Users/natha/OneDrive/Desktop/w/Fiker@mahi/NutriTrack-main/NutriTrackMVCApp/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sinit/OneDrive/Documents/test/NutriTrack/NutriTrackMVCApp/Views/_ViewStart.cshtml]
+[C:/Users/natha/OneDrive/Desktop/w/Fiker@mahi/NutriTrack-main/NutriTrackMVCApp/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Sinit/OneDrive/Documents/test/NutriTrack/NutriTrackMVCApp/Views/Shared/_Layout.cshtml]
+[C:/Users/natha/OneDrive/Desktop/w/Fiker@mahi/NutriTrack-main/NutriTrackMVCApp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-g5s1ushrhq
