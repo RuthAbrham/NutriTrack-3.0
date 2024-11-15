@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("NutriTrackMVCApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+627c905cd2813d66bf603b9229ecbd2ae02a3714")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e0b18380d9e3127109e4c52ea3010c949d17e36a")]
 [assembly: System.Reflection.AssemblyProductAttribute("NutriTrackMVCApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NutriTrackMVCApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

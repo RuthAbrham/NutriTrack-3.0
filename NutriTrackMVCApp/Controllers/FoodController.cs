@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NutriTrackMVCApp.Data;  // namespace 
 using NutriTrackMVCApp.Models;  // Inkluderer modellen 'Food'
 
