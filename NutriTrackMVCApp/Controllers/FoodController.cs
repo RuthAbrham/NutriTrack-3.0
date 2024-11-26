@@ -1,12 +1,12 @@
-using NutriTrackMVCApp.Data;  // namespace 
-using NutriTrackMVCApp.Models;  // Inkluderer modellen 'Food'
+using NutriTrackMVCApp.Data;  // Namespace for data layer
+using NutriTrackMVCApp.Models;  // Namespace for models
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;  // Import for role-based authorization
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NutriTrackMVCApp.Controllers  // namespace for kontrolleren
+namespace NutriTrackMVCApp.Controllers  // Namespace for the controller
 {
     public class FoodController : Controller
     {
@@ -40,6 +40,7 @@ namespace NutriTrackMVCApp.Controllers  // namespace for kontrolleren
 
         // GET: /Food/Create
         // Display form to create a new food item
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -49,6 +50,7 @@ namespace NutriTrackMVCApp.Controllers  // namespace for kontrolleren
         // Handle form submission to create a new food item
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(Food food)
         {
             if (ModelState.IsValid)
@@ -62,6 +64,7 @@ namespace NutriTrackMVCApp.Controllers  // namespace for kontrolleren
 
         // GET: /Food/Edit/{id}
         // Display form to edit an existing food item
+        [Authorize(Roles = "Admin")]  // Restrict to Admins
         public async Task<IActionResult> Edit(int id)
         {
             var food = await _context.Foods.FindAsync(id);
@@ -76,6 +79,7 @@ namespace NutriTrackMVCApp.Controllers  // namespace for kontrolleren
         // Handle form submission to update an existing food item
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]  // Restrict to Admins
         public async Task<IActionResult> Edit(int id, Food food)
         {
             if (id != food.Id)
@@ -108,6 +112,7 @@ namespace NutriTrackMVCApp.Controllers  // namespace for kontrolleren
 
         // GET: /Food/Delete/{id}
         // Display confirmation page to delete a food item
+        [Authorize(Roles = "Admin")]  // Restrict to Admins
         public async Task<IActionResult> Delete(int id)
         {
             var food = await _context.Foods.FindAsync(id);
@@ -122,6 +127,7 @@ namespace NutriTrackMVCApp.Controllers  // namespace for kontrolleren
         // Handle confirmation to delete a food item
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]  // Restrict to Admins
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var food = await _context.Foods.FindAsync(id);

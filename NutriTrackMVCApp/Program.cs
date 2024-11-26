@@ -1,12 +1,20 @@
 using NutriTrackMVCApp.Data;  // namespace for Data-laget
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add console logging for debugging
+builder.Logging.AddConsole();
 
 // Konfigurer database-tilkoblingen.
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Konfigurer Identity-tjenestene.
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>() // Legg til roller
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 // Legg til Swagger-tjenestene.
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -25,9 +33,17 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 // Ensure the database is created and seeded with initial data
 using (var scope = app.Services.CreateScope())
 {
-    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    var services = scope.ServiceProvider;
+
+    // Ensure the database is created and migrated.
+    var context = services.GetRequiredService<ApplicationDbContext>();
     context.Database.Migrate(); // Ensures the database is created
-    DatabaseInitializer.Seed(context); // Calls the Seed method to add initial data
+
+    // Seed roles and admin user.
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+    var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+    await DatabaseInitializer.SeedAsync(context, roleManager, userManager);
+    
 }
 
 // Konfigurer mellomvaren for applikasjonen.
@@ -36,10 +52,16 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
+app.UseAuthentication(); // Legg til autentisering
+app.UseAuthorization();  // Legg til autorisasjon
+
+
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Food}/{action=Index}/{id?}");
+
+
+app.MapRazorPages(); // Ensure Razor Pages are mapped
 
 app.Run();
