@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NutriTrackMVCApp.Data;  // namespace 
 using NutriTrackMVCApp.Models;  // Inkluderer modellen 'Food'
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace NutriTrackMVCApp.Controllers  // namespace for kontrolleren
 {
