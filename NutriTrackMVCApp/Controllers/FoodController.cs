@@ -1,9 +1,14 @@
+using NutriTrackMVCApp.Data;  // Namespace for data layer
+using NutriTrackMVCApp.Models;  // Namespace for models
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;  // Import for role-based authorization
+using System.Linq;
+using System.Threading.Tasks;
 using NutriTrackMVCApp.Data;  // namespace 
 using NutriTrackMVCApp.Models;  // Inkluderer modellen 'Food'
 
-namespace NutriTrackMVCApp.Controllers  // namespace for kontrolleren
+namespace NutriTrackMVCApp.Controllers  // Namespace for the controller
 {
     public class FoodController : Controller
     {
@@ -39,6 +44,8 @@ namespace NutriTrackMVCApp.Controllers  // namespace for kontrolleren
         }
 
         // GET: /Food/Create
+        // Display form to create a new food item
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             _logger.LogInformation("GET /Food/Create - Display form to create a new food item");
@@ -48,6 +55,7 @@ namespace NutriTrackMVCApp.Controllers  // namespace for kontrolleren
         // POST: /Food/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(Food food)
         {
             _logger.LogInformation("POST /Food/Create - Create a new food item");
@@ -70,6 +78,8 @@ namespace NutriTrackMVCApp.Controllers  // namespace for kontrolleren
         }
 
         // GET: /Food/Edit/{id}
+        // Display form to edit an existing food item
+        [Authorize(Roles = "Admin")]  // Restrict to Admins
         public async Task<IActionResult> Edit(int id)
         {
             _logger.LogInformation($"GET /Food/Edit/{id} - Display form to edit food item with ID: {id}");
@@ -85,6 +95,7 @@ namespace NutriTrackMVCApp.Controllers  // namespace for kontrolleren
         // POST: /Food/Edit/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]  // Restrict to Admins
         public async Task<IActionResult> Edit(int id, Food food)
         {
             _logger.LogInformation($"POST /Food/Edit/{id} - Edit food item with ID: {id}");
@@ -122,6 +133,8 @@ namespace NutriTrackMVCApp.Controllers  // namespace for kontrolleren
         }
 
         // GET: /Food/Delete/{id}
+        // Display confirmation page to delete a food item
+        [Authorize(Roles = "Admin")]  // Restrict to Admins
         public async Task<IActionResult> Delete(int id)
         {
             _logger.LogInformation($"GET /Food/Delete/{id} - Display confirmation to delete food item with ID: {id}");
@@ -137,6 +150,7 @@ namespace NutriTrackMVCApp.Controllers  // namespace for kontrolleren
         // POST: /Food/Delete/{id}
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]  // Restrict to Admins
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             _logger.LogInformation($"POST /Food/Delete/{id} - Confirm delete food item with ID: {id}");
