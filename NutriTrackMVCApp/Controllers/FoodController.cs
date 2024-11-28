@@ -1,28 +1,26 @@
-using NutriTrackMVCApp.Data;  // Namespace for data layer
 using NutriTrackMVCApp.Models;  // Namespace for models
+using NutriTrackMVCApp.Repositories;  // Namespace for repository
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;  // Import for role-based authorization
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace NutriTrackMVCApp.Controllers  // Namespace for the controller
 {
     public class FoodController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IFoodRepository _foodRepository;
 
-        // Constructor for ApplicationDbContext to access the database
-        public FoodController(ApplicationDbContext context)
+        // Constructor for IFoodRepository to access the repository
+        public FoodController(IFoodRepository foodRepository)
         {
-            _context = context;
+            _foodRepository = foodRepository;
         }
 
         // GET: /Food
         // Display all food items (Index page)
         public async Task<IActionResult> Index()
         {
-            var foods = await _context.Foods.ToListAsync();
+            var foods = await _foodRepository.GetAllFoodsAsync();
             return View(foods);
         }
 
@@ -30,7 +28,7 @@ namespace NutriTrackMVCApp.Controllers  // Namespace for the controller
         // Display details of a specific food item
         public async Task<IActionResult> Details(int id)
         {
-            var food = await _context.Foods.FindAsync(id);
+            var food = await _foodRepository.GetFoodByIdAsync(id);
             if (food == null)
             {
                 return NotFound();
@@ -55,8 +53,7 @@ namespace NutriTrackMVCApp.Controllers  // Namespace for the controller
         {
             if (ModelState.IsValid)
             {
-                _context.Foods.Add(food);
-                await _context.SaveChangesAsync();
+                await _foodRepository.AddFoodAsync(food);
                 return RedirectToAction(nameof(Index));
             }
             return View(food);
@@ -67,7 +64,7 @@ namespace NutriTrackMVCApp.Controllers  // Namespace for the controller
         [Authorize(Roles = "Admin")]  // Restrict to Admins
         public async Task<IActionResult> Edit(int id)
         {
-            var food = await _context.Foods.FindAsync(id);
+            var food = await _foodRepository.GetFoodByIdAsync(id);
             if (food == null)
             {
                 return NotFound();
@@ -91,12 +88,11 @@ namespace NutriTrackMVCApp.Controllers  // Namespace for the controller
             {
                 try
                 {
-                    _context.Update(food);
-                    await _context.SaveChangesAsync();
+                    await _foodRepository.UpdateFoodAsync(food);
                 }
-                catch (DbUpdateConcurrencyException)
+                catch
                 {
-                    if (!_context.Foods.Any(e => e.Id == id))
+                    if (await _foodRepository.GetFoodByIdAsync(id) == null)
                     {
                         return NotFound();
                     }
@@ -115,7 +111,7 @@ namespace NutriTrackMVCApp.Controllers  // Namespace for the controller
         [Authorize(Roles = "Admin")]  // Restrict to Admins
         public async Task<IActionResult> Delete(int id)
         {
-            var food = await _context.Foods.FindAsync(id);
+            var food = await _foodRepository.GetFoodByIdAsync(id);
             if (food == null)
             {
                 return NotFound();
@@ -130,13 +126,9 @@ namespace NutriTrackMVCApp.Controllers  // Namespace for the controller
         [Authorize(Roles = "Admin")]  // Restrict to Admins
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var food = await _context.Foods.FindAsync(id);
-            if (food != null)
-            {
-                _context.Foods.Remove(food);
-                await _context.SaveChangesAsync();
-            }
+            await _foodRepository.DeleteFoodAsync(id);
             return RedirectToAction(nameof(Index));
         }
     }
 }
+

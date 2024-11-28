@@ -1,6 +1,9 @@
 using NutriTrackMVCApp.Data;  // namespace for Data-laget
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using NutriTrackMVCApp.Repositories; // Replace with your repository namespace
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>() // Legg til roller
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+// Register the repository service (add it here).
+builder.Services.AddScoped<IFoodRepository, FoodRepository>();
+
 // Legg til Swagger-tjenestene.
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
