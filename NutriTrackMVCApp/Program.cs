@@ -1,6 +1,7 @@
 using NutriTrackMVCApp.Data;  // namespace for Data-laget
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using NutriTrackMVCApp.Services; // Namespace for Services
 using NutriTrackMVCApp.Repositories; // Replace with your repository namespace
 
 
@@ -15,11 +16,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Konfigurer Identity-tjenestene.
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<IdentityUser>()
     .AddRoles<IdentityRole>() // Legg til roller
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 
+
+// Register the AuthorizationService
+builder.Services.AddScoped<IAuthorizationService, AuthorizationService>();
 // Register the repository service (add it here).
 builder.Services.AddScoped<IFoodRepository, FoodRepository>();
 

@@ -1,7 +1,9 @@
 using NutriTrackMVCApp.Models;  // Namespace for models
 using NutriTrackMVCApp.Repositories;  // Namespace for repository
+using NutriTrackMVCApp.Services;  // Namespace for services
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;  // Import for role-based authorization
+using System.Security.Claims; // For accessing user ID
 using System.Threading.Tasks;
 
 namespace NutriTrackMVCApp.Controllers  // Namespace for the controller
@@ -9,11 +11,13 @@ namespace NutriTrackMVCApp.Controllers  // Namespace for the controller
     public class FoodController : Controller
     {
         private readonly IFoodRepository _foodRepository;
+        private readonly NutriTrackMVCApp.Services.IAuthorizationService _authorizationService;
 
-        // Constructor for IFoodRepository to access the repository
-        public FoodController(IFoodRepository foodRepository)
+        // Constructor for IFoodRepository and IAuthorizationService
+        public FoodController(IFoodRepository foodRepository, NutriTrackMVCApp.Services.IAuthorizationService authorizationService)
         {
             _foodRepository = foodRepository;
+            _authorizationService = authorizationService;
         }
 
         // GET: /Food
@@ -38,9 +42,15 @@ namespace NutriTrackMVCApp.Controllers  // Namespace for the controller
 
         // GET: /Food/Create
         // Display form to create a new food item
-        [Authorize(Roles = "Admin")]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            // Authorization logic
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!await _authorizationService.IsAdmin(userId))
+            {
+                return Unauthorized(); // Redirect unauthorized users
+            }
+
             return View();
         }
 
@@ -48,9 +58,15 @@ namespace NutriTrackMVCApp.Controllers  // Namespace for the controller
         // Handle form submission to create a new food item
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(Food food)
         {
+            // Authorization logic
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!await _authorizationService.IsAdmin(userId))
+            {
+                return Unauthorized(); // Redirect unauthorized users
+            }
+
             if (ModelState.IsValid)
             {
                 await _foodRepository.AddFoodAsync(food);
@@ -61,9 +77,15 @@ namespace NutriTrackMVCApp.Controllers  // Namespace for the controller
 
         // GET: /Food/Edit/{id}
         // Display form to edit an existing food item
-        [Authorize(Roles = "Admin")]  // Restrict to Admins
         public async Task<IActionResult> Edit(int id)
         {
+            // Authorization logic
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!await _authorizationService.IsAdmin(userId))
+            {
+                return Unauthorized(); // Redirect unauthorized users
+            }
+
             var food = await _foodRepository.GetFoodByIdAsync(id);
             if (food == null)
             {
@@ -76,9 +98,15 @@ namespace NutriTrackMVCApp.Controllers  // Namespace for the controller
         // Handle form submission to update an existing food item
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]  // Restrict to Admins
         public async Task<IActionResult> Edit(int id, Food food)
         {
+            // Authorization logic
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!await _authorizationService.IsAdmin(userId))
+            {
+                return Unauthorized(); // Redirect unauthorized users
+            }
+
             if (id != food.Id)
             {
                 return BadRequest();
@@ -108,9 +136,15 @@ namespace NutriTrackMVCApp.Controllers  // Namespace for the controller
 
         // GET: /Food/Delete/{id}
         // Display confirmation page to delete a food item
-        [Authorize(Roles = "Admin")]  // Restrict to Admins
         public async Task<IActionResult> Delete(int id)
         {
+            // Authorization logic
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!await _authorizationService.IsAdmin(userId))
+            {
+                return Unauthorized(); // Redirect unauthorized users
+            }
+
             var food = await _foodRepository.GetFoodByIdAsync(id);
             if (food == null)
             {
@@ -123,12 +157,19 @@ namespace NutriTrackMVCApp.Controllers  // Namespace for the controller
         // Handle confirmation to delete a food item
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]  // Restrict to Admins
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            // Authorization logic
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!await _authorizationService.IsAdmin(userId))
+            {
+                return Unauthorized(); // Redirect unauthorized users
+            }
+
             await _foodRepository.DeleteFoodAsync(id);
             return RedirectToAction(nameof(Index));
         }
     }
 }
+
 
