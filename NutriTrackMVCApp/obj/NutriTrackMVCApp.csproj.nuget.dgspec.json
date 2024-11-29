@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\natha\\OneDrive\\Desktop\\w\\Fiker@mahi\\NutriTrack-main\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj": {}
+    "C:\\Users\\Sinit\\OneDrive\\Documents\\Informasjontek\\Web.current\\NutriTrack\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\natha\\OneDrive\\Desktop\\w\\Fiker@mahi\\NutriTrack-main\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj": {
+    "C:\\Users\\Sinit\\OneDrive\\Documents\\Informasjontek\\Web.current\\NutriTrack\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\natha\\OneDrive\\Desktop\\w\\Fiker@mahi\\NutriTrack-main\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj",
+        "projectUniqueName": "C:\\Users\\Sinit\\OneDrive\\Documents\\Informasjontek\\Web.current\\NutriTrack\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj",
         "projectName": "NutriTrackMVCApp",
-        "projectPath": "C:\\Users\\natha\\OneDrive\\Desktop\\w\\Fiker@mahi\\NutriTrack-main\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj",
-        "packagesPath": "C:\\Users\\natha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\natha\\OneDrive\\Desktop\\w\\Fiker@mahi\\NutriTrack-main\\NutriTrackMVCApp\\obj\\",
+        "projectPath": "C:\\Users\\Sinit\\OneDrive\\Documents\\Informasjontek\\Web.current\\NutriTrack\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj",
+        "packagesPath": "C:\\Users\\Sinit\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sinit\\OneDrive\\Documents\\Informasjontek\\Web.current\\NutriTrack\\NutriTrackMVCApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\natha\\AppData\\Roaming\\NuGet\\NuGet.Config",
