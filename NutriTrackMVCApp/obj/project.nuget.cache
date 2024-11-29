@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "31geFZdCF78=",
+  "dgSpecHash": "uIu18O2eS/8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Sinit\\OneDrive\\Documents\\test\\NutriTrack\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj",
+  "projectFilePath": "C:\\Users\\Sinit\\OneDrive\\Documents\\Informasjontek\\Web.current\\NutriTrack\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sinit\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Sinit\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

@@ -8511,11 +8511,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sinit\\OneDrive\\Documents\\test\\NutriTrack\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj",
+      "projectUniqueName": "C:\\Users\\Sinit\\OneDrive\\Documents\\Informasjontek\\Web.current\\NutriTrack\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj",
       "projectName": "NutriTrackMVCApp",
-      "projectPath": "C:\\Users\\Sinit\\OneDrive\\Documents\\test\\NutriTrack\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj",
+      "projectPath": "C:\\Users\\Sinit\\OneDrive\\Documents\\Informasjontek\\Web.current\\NutriTrack\\NutriTrackMVCApp\\NutriTrackMVCApp.csproj",
       "packagesPath": "C:\\Users\\Sinit\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sinit\\OneDrive\\Documents\\test\\NutriTrack\\NutriTrackMVCApp\\obj\\",
+      "outputPath": "C:\\Users\\Sinit\\OneDrive\\Documents\\Informasjontek\\Web.current\\NutriTrack\\NutriTrackMVCApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Sinit\\AppData\\Roaming\\NuGet\\NuGet.Config"
