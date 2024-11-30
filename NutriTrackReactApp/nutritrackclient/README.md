@@ -1,3 +1,8 @@
+## **Opdatering**
+Jeg hadde problemer med testing av nettsiden (backend og frontend delen). Jeg er ferdig med alt, men må lage testene ferdig og finpusse nettsiden. Filene kommer i løpet av i kveld og imorgen. Alt vil være ferdig pushet innen imorgen. 
+
+- Fiona
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
