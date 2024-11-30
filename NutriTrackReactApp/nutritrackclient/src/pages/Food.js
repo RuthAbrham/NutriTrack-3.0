@@ -1,6 +1,6 @@
 // Food.js
 import React, { useState, useEffect } from "react";
-import { getFoods, createFood, deleteFood } from "./api/foodApi";
+import { getFoods, createFood, deleteFood } from "../api/foodApi";
 import { Link } from "react-router-dom";
 
 const Food = () => {
