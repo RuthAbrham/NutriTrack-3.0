@@ -20,7 +20,9 @@ const FoodDetails = () => {
       setError(null); // Clear any previous error
     } catch (error) {
       console.error(error);
-      setError("Failed to fetch food details. Please make sure the backend server is running.");
+      setError(
+        "Failed to fetch food details. Please make sure the backend server is running."
+      );
       setFood(null); // Clear food details on error
     }
   };
@@ -31,7 +33,11 @@ const FoodDetails = () => {
       {error && <div className="text-red-500 mb-4">{error}</div>}
       {food ? (
         <div className="border p-4 rounded shadow-md">
-          <img src={food.imageURL} alt={food.name} className="w-full h-48 object-cover mb-2"/>
+          <img
+            src={`http://localhost:5085/${food.imageURL}`}
+            alt={food.name}
+            className="w-full h-48 object-cover mb-2"
+          />
           <h2 className="text-xl font-bold">{food.name}</h2>
           <p>Food Group: {food.foodGroup}</p>
           <p>Price: ${food.price}</p>

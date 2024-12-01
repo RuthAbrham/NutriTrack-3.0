@@ -1,12 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using NutriTrackMVCApp.Data;  // namespace 
-using NutriTrackMVCApp.Models;  // Inkluderer modellen 'Food'
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using NutriTrackMVCApp.Data;
+using NutriTrackMVCApp.Models;
 
-namespace NutriTrackMVCApp.Controllers  // namespace for kontrolleren
+namespace NutriTrackMVCApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -14,12 +11,13 @@ namespace NutriTrackMVCApp.Controllers  // namespace for kontrolleren
     {
         private readonly ApplicationDbContext _context;
         private readonly ILogger<FoodApiController> _logger;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        // Constructor for ApplicationDbContext and ILogger for logging
-        public FoodApiController(ApplicationDbContext context, ILogger<FoodApiController> logger)
+        public FoodApiController(ApplicationDbContext context, ILogger<FoodApiController> logger, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _logger = logger;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: api/food
@@ -48,9 +46,22 @@ namespace NutriTrackMVCApp.Controllers  // namespace for kontrolleren
 
         // POST: api/food
         [HttpPost]
-        public async Task<ActionResult<Food>> CreateFood(Food food)
+        public async Task<ActionResult<Food>> CreateFood([FromForm] Food food, [FromForm] IFormFile imageFile)
         {
             _logger.LogInformation("POST api/food - Create a new food item");
+
+            if (imageFile != null)
+            {
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images/foods");
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + imageFile.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(fileStream);
+                }
+                food.ImageURL = "/images/foods/" + uniqueFileName;
+            }
+
             _context.Foods.Add(food);
             await _context.SaveChangesAsync();
             _logger.LogInformation($"POST api/food - Food item with ID: {food.Id} created successfully");
@@ -60,13 +71,25 @@ namespace NutriTrackMVCApp.Controllers  // namespace for kontrolleren
 
         // PUT: api/food/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateFood(int id, Food food)
+        public async Task<IActionResult> UpdateFood(int id, [FromForm] Food food, [FromForm] IFormFile imageFile)
         {
             _logger.LogInformation($"PUT api/food/{id} - Update food item with ID: {id}");
             if (id != food.Id)
             {
                 _logger.LogWarning($"PUT api/food/{id} - Bad request, ID mismatch. URL ID: {id}, Food ID: {food.Id}");
                 return BadRequest("Id in URL does not match Id in body.");
+            }
+
+            if (imageFile != null)
+            {
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images/foods");
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + imageFile.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(fileStream);
+                }
+                food.ImageURL = "/images/foods/" + uniqueFileName;
             }
 
             _context.Entry(food).State = EntityState.Modified;

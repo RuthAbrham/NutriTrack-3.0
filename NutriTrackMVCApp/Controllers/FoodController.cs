@@ -1,34 +1,33 @@
-using System.Security.Claims; // For accessing user ID
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization; // Import for role-based authorization
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NutriTrackMVCApp.Data; // namespace
-using NutriTrackMVCApp.Models; // Namespace for models
-using NutriTrackMVCApp.Models; // Inkluderer modellen 'Food'
-using NutriTrackMVCApp.Repositories; // Namespace for repository
-using NutriTrackMVCApp.Services; // Namespace for services
+using NutriTrackMVCApp.Models;
+using NutriTrackMVCApp.Repositories;
+using System.Security.Claims;
 
-namespace NutriTrackMVCApp.Controllers // Namespace for the controller
+namespace NutriTrackMVCApp.Controllers
 {
     public class FoodController : Controller
     {
         private readonly IFoodRepository _foodRepository;
         private readonly NutriTrackMVCApp.Services.IAuthorizationService _authorizationService;
         private readonly ILogger<FoodController> _logger;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        // Constructor for IFoodRepository and IAuthorizationService
         public FoodController(
             IFoodRepository foodRepository,
             NutriTrackMVCApp.Services.IAuthorizationService authorizationService,
-            ILogger<FoodController> logger
+            ILogger<FoodController> logger,
+            IWebHostEnvironment webHostEnvironment
         )
         {
             _foodRepository = foodRepository;
             _authorizationService = authorizationService;
             _logger = logger;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: /Food
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             _logger.LogInformation("GET /Food - Display all food items");
@@ -53,15 +52,14 @@ namespace NutriTrackMVCApp.Controllers // Namespace for the controller
         }
 
         // GET: /Food/Create
-        // Display form to create a new food item
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create()
         {
             _logger.LogInformation("GET /Food/Create - Display form to create a new food item");
-            // Authorization logic
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (!await _authorizationService.IsAdmin(userId))
             {
-                return Unauthorized(); // Redirect unauthorized users
+                return Unauthorized();
             }
             return View();
         }
@@ -69,37 +67,45 @@ namespace NutriTrackMVCApp.Controllers // Namespace for the controller
         // POST: /Food/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Food food)
+        public async Task<IActionResult> Create(Food food, IFormFile imageFile)
         {
-            // Authorization logic
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (!await _authorizationService.IsAdmin(userId))
             {
-                return Unauthorized(); // Redirect unauthorized users
+                return Unauthorized();
             }
 
             if (ModelState.IsValid)
             {
-                _logger.LogInformation("POST /Food/Create - Create a new food item");
+                if (imageFile != null)
+                {
+                    string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images/foods");
+                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + imageFile.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await imageFile.CopyToAsync(fileStream);
+                    }
+                    food.ImageURL = "/images/foods/" + uniqueFileName;
+                }
+
                 await _foodRepository.AddFoodAsync(food);
                 return RedirectToAction(nameof(Index));
             }
-            _logger.LogWarning("POST /Food/Create - Model state is not valid");
+
             return View(food);
         }
 
         // GET: /Food/Edit/{id}
-        // Display form to edit an existing food item
         public async Task<IActionResult> Edit(int id)
         {
             _logger.LogInformation(
                 $"GET /Food/Edit/{id} - Display form to edit food item with ID: {id}"
             );
-            // Authorization logic
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (!await _authorizationService.IsAdmin(userId))
             {
-                return Unauthorized(); // Redirect unauthorized users
+                return Unauthorized();
             }
 
             var food = await _foodRepository.GetFoodByIdAsync(id);
@@ -114,62 +120,51 @@ namespace NutriTrackMVCApp.Controllers // Namespace for the controller
         // POST: /Food/Edit/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Food food)
+        public async Task<IActionResult> Edit(int id, Food food, IFormFile imageFile)
         {
-            // Authorization logic
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (!await _authorizationService.IsAdmin(userId))
             {
-                return Unauthorized(); // Redirect unauthorized users
+                return Unauthorized();
             }
 
             if (id != food.Id)
             {
-                _logger.LogWarning(
-                    $"POST /Food/Edit/{id} - Bad request, ID mismatch. Provided ID: {id}, Food ID: {food.Id}"
-                );
                 return BadRequest();
             }
 
             if (ModelState.IsValid)
             {
-                try
+                if (imageFile != null)
                 {
-                    _logger.LogInformation($"POST /Food/Edit/{id} - Edit food item with ID: {id}");
-                    await _foodRepository.UpdateFoodAsync(food);
-                }
-                catch
-                {
-                    if (await _foodRepository.GetFoodByIdAsync(id) == null)
+                    string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images/foods");
+                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + imageFile.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
-                        _logger.LogWarning(
-                            $"POST /Food/Edit/{id} - Food item with ID: {id} not found during update"
-                        );
-                        return NotFound();
+                        await imageFile.CopyToAsync(fileStream);
                     }
-                    else
-                    {
-                        throw;
-                    }
+                    food.ImageURL = "/images/foods/" + uniqueFileName;
                 }
+
+                await _foodRepository.UpdateFoodAsync(food);
+                return RedirectToAction(nameof(Index));
             }
-            _logger.LogWarning($"POST /Food/Edit/{id} - Model state is not valid");
+
             return View(food);
         }
 
         // GET: /Food/Delete/{id}
-        // Display confirmation page to delete a food item
         public async Task<IActionResult> Delete(int id)
         {
             _logger.LogInformation(
                 $"GET /Food/Delete/{id} - Display confirmation to delete food item with ID: {id}"
             );
 
-            // Authorization logic
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (!await _authorizationService.IsAdmin(userId))
             {
-                return Unauthorized(); // Redirect unauthorized users
+                return Unauthorized();
             }
 
             var food = await _foodRepository.GetFoodByIdAsync(id);
@@ -183,21 +178,21 @@ namespace NutriTrackMVCApp.Controllers // Namespace for the controller
 
         // POST: /Food/Delete/{id}
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             _logger.LogInformation(
                 $"POST /Food/Delete/{id} - Confirm delete food item with ID: {id}"
             );
-            // Authorization logic
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (!await _authorizationService.IsAdmin(userId))
             {
-                return Unauthorized(); // Redirect unauthorized users
+                return Unauthorized();
             }
 
             await _foodRepository.DeleteFoodAsync(id);
-            _logger.LogInformation($"POST /Food/Delete/{id} - Food Deleted Successfuly");
+            _logger.LogInformation($"POST /Food/Delete/{id} - Food Deleted Successfully");
 
             return RedirectToAction(nameof(Index));
         }
