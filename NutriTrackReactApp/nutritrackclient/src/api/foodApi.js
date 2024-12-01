@@ -9,6 +9,7 @@ export const getFoods = async () => {
     throw new Error(`error: ${error}`);
   }
 };
+
 export const getFood = async (id) => {
   try {
     console.info("fetching food");
@@ -21,11 +22,10 @@ export const getFood = async (id) => {
 
 export const createFood = async (food) => {
   try {
-    console.info("fetching foods");
+    console.info("creating food");
     const res = await fetch(`${baseUrl}/api/foodApi`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(food),
+      body: food, // FormData object
     });
     return res.json();
   } catch (error) {
@@ -35,19 +35,20 @@ export const createFood = async (food) => {
 
 export const updateFood = async (id, food) => {
   try {
-    console.info("fetching foods");
+    console.info("updating food");
     const res = await fetch(`${baseUrl}/api/foodApi/${id}`, {
       method: "PUT",
-      body: JSON.stringify(food),
+      body: food, // FormData object
     });
     return res.json();
   } catch (error) {
     throw new Error(`error: ${error}`);
   }
 };
+
 export const deleteFood = async (id) => {
   try {
-    console.info("fetching foods");
+    console.info("deleting food");
     const res = await fetch(`${baseUrl}/api/foodApi/${id}`, {
       method: "DELETE",
     });

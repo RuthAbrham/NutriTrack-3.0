@@ -1,8 +1,8 @@
-using NutriTrackMVCApp.Data;  // namespace for Data-laget
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using NutriTrackMVCApp.Services; // Namespace for Services
+using Microsoft.EntityFrameworkCore;
+using NutriTrackMVCApp.Data;  // namespace for Data-laget
 using NutriTrackMVCApp.Repositories; // Replace with your repository namespace
+using NutriTrackMVCApp.Services; // Namespace for Services
 
 
 
@@ -21,7 +21,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 
-
+builder.Services.AddCors(options =>
+    options.AddDefaultPolicy(builder => builder.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod())
+);
 // Register the AuthorizationService
 builder.Services.AddScoped<IAuthorizationService, AuthorizationService>();
 // Register the repository service (add it here).
@@ -55,9 +57,9 @@ using (var scope = app.Services.CreateScope())
     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
     var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
     await DatabaseInitializer.SeedAsync(context, roleManager, userManager);
-    
-}
 
+}
+app.UseCors();
 // Konfigurer mellomvaren for applikasjonen.
 app.UseHttpsRedirection();
 app.UseStaticFiles();

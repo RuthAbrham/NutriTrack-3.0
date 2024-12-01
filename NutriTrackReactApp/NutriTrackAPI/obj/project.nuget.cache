@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hKqKiCNXGXc=",
+  "dgSpecHash": "uozYaIMaKRJKWG4aaL6JTEOtwgFvsQ+COhLb/cqG2guG/ulCiOETdT4L18xu9KGfH9OjY1g6lpC5vkE83ckgWw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Sinit\\OneDrive\\Documents\\Informasjontek\\Web.current\\NutriTrack\\NutriTrackReactApp\\NutriTrackAPI\\NutriTrackAPI.csproj",
+  "projectFilePath": "C:\\Users\\natha\\OneDrive\\Desktop\\w\\Fiker@mahi\\NutriTrack-main\\NutriTrackReactApp\\NutriTrackAPI\\NutriTrackAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\natha\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.8\\microsoft.aspnetcore.openapi.8.0.8.nupkg.sha512",
     "C:\\Users\\natha\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

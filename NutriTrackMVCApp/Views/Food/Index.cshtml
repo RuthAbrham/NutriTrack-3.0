@@ -2,38 +2,34 @@
 
 @{
     ViewData["Title"] = "Food List";
-    Layout ="_Layout";
+    Layout = "_Layout";
 }
 
-<div class="container">
-    <h2 class="my-4">Food Items</h2>
+<div class="container my-4">
+    <h2 class="mb-4">Food Items</h2>
 
-    <!-- Food items container with a horizontal flex layout -->
-    <div class="food-flex-container">
+    <div class="row">
         @foreach (var item in Model)
         {
-            <div class="food-card">
-                <!-- Display food image -->
-                <img src="@item.ImageURL" alt="@item.Name" class="food-image">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="@item.ImageURL" class="card-img-top" alt="@item.Name" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text">
+                            <strong>Price:</strong> @item.Price NOK<br />
+                            <strong>Weight:</strong> @item.Weight g
+                        </p>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Details</a>
 
-                <div class="food-card-body">
-                    <!-- Food name and price -->
-                    <h5>@item.Name</h5>
-                    <p>
-                        <strong>Price:</strong> @item.Price NOK<br />
-                        <strong>Weight:</strong> @item.Weight g
-                    </p>
-
-                    <!-- Button to view details -->
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">View Details</a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary btn-sm">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                        }
+                    </div>
                 </div>
             </div>
         }
     </div>
 </div>
-
-
-
-
-
-

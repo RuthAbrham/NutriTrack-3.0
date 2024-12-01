@@ -19,25 +19,23 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
                         <!-- Additional Navigation Links -->
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Food" asp-action="Index">Food List</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Food" asp-action="Create">Add New Food</a>
-                        </li>
-                        
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Food" asp-action="Create">Add New Food</a>
+                            </li>
+                        }
+
                         @if (User.Identity.IsAuthenticated)
                         {
                             <!-- Show Logout Button -->
                             <li class="nav-item">
-                                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/Identity/Account/Login" method="post" class="form-inline">
+                                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/" method="post" class="form-inline">
                                     <button type="submit" class="btn btn-danger">Log out</button>
                                 </form>
                             </li>
@@ -62,7 +60,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - NutriTrackMVCApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - NutriTrackMVCApp
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -71,4 +69,3 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-

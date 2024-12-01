@@ -6,81 +6,38 @@
 
 <h2>Create Food</h2>
 
-<form asp-action="Create" method="post">
-    <div class="form-group">
-        <label asp-for="Name"></label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
+<form asp-action="Create" method="post" enctype="multipart/form-data" style="width: 50%; margin: 0 auto;">
+    <div class="form-group" style="margin-bottom: 15px;">
+        <label asp-for="Name" style="display: block; margin-bottom: 5px; font-weight: bold;"></label>
+        <input asp-for="Name" class="form-control" style="width: 100%; padding: 8px; box-sizing: border-box;" />
+        <span asp-validation-for="Name" class="text-danger" style="color: red; display: block; margin-top: 5px;"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="FoodGroup"></label>
-        <input asp-for="FoodGroup" class="form-control" />
-        <span asp-validation-for="FoodGroup" class="text-danger"></span>
+    <div class="form-group" style="margin-bottom: 15px;">
+        <label asp-for="FoodGroup" style="display: block; margin-bottom: 5px; font-weight: bold;"></label>
+        <input asp-for="FoodGroup" class="form-control" style="width: 100%; padding: 8px; box-sizing: border-box;" />
+        <span asp-validation-for="FoodGroup" class="text-danger" style="color: red; display: block; margin-top: 5px;"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="Price"></label>
-        <input asp-for="Price" class="form-control" />
-        <span asp-validation-for="Price" class="text-danger"></span>
+    <div class="form-group" style="margin-bottom: 15px;">
+        <label asp-for="Price" style="display: block; margin-bottom: 5px; font-weight: bold;"></label>
+        <input asp-for="Price" class="form-control" style="width: 100%; padding: 8px; box-sizing: border-box;" />
+        <span asp-validation-for="Price" class="text-danger" style="color: red; display: block; margin-top: 5px;"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="Weight"></label>
-        <input asp-for="Weight" class="form-control" />
-        <span asp-validation-for="Weight" class="text-danger"></span>
+    <div class="form-group" style="margin-bottom: 15px;">
+        <label asp-for="Weight" style="display: block; margin-bottom: 5px; font-weight: bold;"></label>
+        <input asp-for="Weight" class="form-control" style="width: 100%; padding: 8px; box-sizing: border-box;" />
+        <span asp-validation-for="Weight" class="text-danger" style="color: red; display: block; margin-top: 5px;"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="ImageURL"></label>
-        <input asp-for="ImageURL" class="form-control" />
-        <span asp-validation-for="ImageURL" class="text-danger"></span>
+    <div class="form-group" style="margin-bottom: 15px;">
+        <label asp-for="ImageURL" style="display: block; margin-bottom: 5px; font-weight: bold;"></label>
+        <input type="file" name="imageFile" class="form-control" style="width: 100%; padding: 8px; box-sizing: border-box;" />
     </div>
 
-    <div class="form-group">
-        <label asp-for="Energy"></label>
-        <input asp-for="Energy" class="form-control" />
-        <span asp-validation-for="Energy" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Fat"></label>
-        <input asp-for="Fat" class="form-control" />
-        <span asp-validation-for="Fat" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="SaturatedFat"></label>
-        <input asp-for="SaturatedFat" class="form-control" />
-        <span asp-validation-for="SaturatedFat" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Carbohydrates"></label>
-        <input asp-for="Carbohydrates" class="form-control" />
-        <span asp-validation-for="Carbohydrates" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Sugar"></label>
-        <input asp-for="Sugar" class="form-control" />
-        <span asp-validation-for="Sugar" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Protein"></label>
-        <input asp-for="Protein" class="form-control" />
-        <span asp-validation-for="Protein" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Salt"></label>
-        <input asp-for="Salt" class="form-control" />
-        <span asp-validation-for="Salt" class="text-danger"></span>
-    </div>
+    <div class="form-group" style="margin-bottom: 15px;"> <label asp-for="Energy" style="display: block; margin-bottom: 5px; font-weight: bold;"></label> <input asp-for="Energy" class="form-control" style="width: 100%; padding: 8px; box-sizing: border-box;" /> <span asp-validation-for="Energy" class="text-danger" style="color: red; display: block; margin-top: 5px;"></span> </div> <div class="form-group" style="margin-bottom: 15px;"> <label asp-for="Fat" style="display: block; margin-bottom: 5px; font-weight: bold;"></label> <input asp-for="Fat" class="form-control" style="width: 100%; padding: 8px; box-sizing: border-box;" /> <span asp-validation-for="Fat" class="text-danger" style="color: red; display: block; margin-top: 5px;"></span> </div> <div class="form-group" style="margin-bottom: 15px;"> <label asp-for="SaturatedFat" style="display: block; margin-bottom: 5px; font-weight: bold;"></label> <input asp-for="SaturatedFat" class="form-control" style="width: 100%; padding: 8px; box-sizing: border-box;" /> <span asp-validation-for="SaturatedFat" class="text-danger" style="color: red; display: block; margin-top: 5px;"></span> </div> <div class="form-group" style="margin-bottom: 15px;"> <label asp-for="Carbohydrates" style="display: block; margin-bottom: 5px; font-weight: bold;"></label> <input asp-for="Carbohydrates" class="form-control" style="width: 100%; padding: 8px; box-sizing: border-box;" /> <span asp-validation-for="Carbohydrates" class="text-danger" style="color: red; display: block; margin-top: 5px;"></span> </div> <div class="form-group" style="margin-bottom: 15px;"> <label asp-for="Sugar" style="display: block; margin-bottom: 5px; font-weight: bold;"></label> <input asp-for="Sugar" class="form-control" style="width: 100%; padding: 8px; box-sizing: border-box;" /> <span asp-validation-for="Sugar" class="text-danger" style="color: red; display: block; margin-top: 5px;"></span> </div> <div class="form-group" style="margin-bottom: 15px;"> <label asp-for="Protein" style="display: block; margin-bottom: 5px; font-weight: bold;"></label> <input asp-for="Protein" class="form-control" style="width: 100%; padding: 8px; box-sizing: border-box;" /> <span asp-validation-for="Protein" class="text-danger" style="color: red; display: block; margin-top: 5px;"></span> </div> <div class="form-group" style="margin-bottom: 15px;"> <label asp-for="Salt" style="display: block; margin-bottom: 5px; font-weight: bold;"></label> <input asp-for="Salt" class="form-control" style="width: 100%; padding: 8px; box-sizing: border-box;" /> <span asp-validation-for="Salt" class="text-danger" style="color: red; display: block; margin-top: 5px;"></span> </div>
 
     <button type="submit" class="btn btn-primary">Create</button>
     <a asp-action="Index" class="btn btn-secondary">Cancel</a>
 </form>
-
-
